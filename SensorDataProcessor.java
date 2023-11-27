@@ -5,43 +5,48 @@ import java.io.IOException;
 public class SensorDataProcessor {
 // Senson data and limits.
 
-    public double[][][] data;
-    public double[][] limit;
+    public double[][][] sensorData;// Three-dimensional array to store sensor data
+    public double[][] limits;// Two-dimensional array to store limits
 // constructor
 
-    public SensorDataProcessor(double[][][] data, double[][] limit) {
-        this.data = data;
-        this.limit = limit;
+    public SensorDataProcessor(double[][][] sensorData, double[][] limits) {
+        this.sensorData = sensorData;
+        this.limits = limits;
     }
-// calculates average of sensor data
+// Calculates the average of an array
 
-    private double average(double[] array) {
-        int i = 0;
-        double val = 0;
-        for (i = 0; i < array.length; i++) {
-            val += array[i];
+    private double calculateAverage(double[] array) {
+        int index= 0;
+        double sum = 0;
+        for (index = 0; index < array.length; index++) {
+            sum += array[index];
         }
-        return val / array.length;
+        return sum / array.length;
     }
-// calculate data
+// Performs data calculation and writes the result to a file
 
      public void calculate(double divisor) {
-        double[][][] calculatedData = new double[data.length][data[0].length][data[0][0].length];
+        double[][][] calculatedData = new double[sensorData.length][sensorData[0].length][data[0][0].length];
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("RacingStatsData.txt"))) {
-            for (int i = 0; i < data.length; i++) {
-                for (int j = 0; j < data[0].length; j++) {
-                    for (int k = 0; k < data[0][0].length; k++) {
-                        calculatedData[i][j][k] = data[i][j][k] / divisor - Math.pow(limit[i][j], 2.0);
-
-                        double average = calculateAverage(calculatedData[i][j]);
-
-                        if (average > 10 && average < 50) {
+            for (int i = 0; i < sensorData.length; i++) {
+                for (int j = 0; j < sensorData[0].length; j++) {
+                    for (int k = 0; k < sensorData[0][0].length; k++) {
+                        // Calculate the processed data value
+                         calculatedData[i][j][k] = sensorData[i][j][k] / divisor - Math.pow(limits[i][j], 2.0);
+                        
+                         // Calculate the average of the current sensor data
+                        double currentAverage = calculateAverage(calculatedData[i][j]);
+                          // Check conditions for further processing
+                        if (currentAverage > 10 && currentAverage  < 50) {
+                             // Stop processing this particular sensor data
                             break;
-                        } else if (Math.max(data[i][j][k], calculatedData[i][j][k]) > data[i][j][k]) {
+                        } else if (Math.max(sensorData[i][j][k], calculatedData[i][j][k]) > sensorData[i][j][k]) {
+                              // Stop processing this particular sensor data
                             break;
-                        } else if (Math.pow(Math.abs(data[i][j][k]), 3) < Math.pow(Math.abs(calculatedData[i][j][k]), 3)
-                                && calculateAverage(data[i][j]) < calculatedData[i][j][k] && (i + 1) * (j + 1) > 0) {
+                        } else if (Math.pow(Math.abs(sensorData[i][j][k]), 3) < Math.pow(Math.abs(calculatedData[i][j][k]), 3)
+                                && calculateAverage(sensorData[i][j]) < calculatedData[i][j][k] && (i + 1) * (j + 1) > 0) {
+                             // Multiply the calculatedData value by 2
                             calculatedData[i][j][k] *= 2;
                         }
                     }
