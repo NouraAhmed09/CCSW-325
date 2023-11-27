@@ -4,7 +4,8 @@
 
 Sarah Haddad 
 ID: 2006719
-
+Issue: No exception handling when opening a file, poor loop structure and unclear routine
+Solution: Proper exception handling and better loop structure
 ==================================
 
 Raghad Khaled Alzahrani
