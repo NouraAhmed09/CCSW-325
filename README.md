@@ -10,8 +10,6 @@ ID: 2006719
 
 Raghad Khaled Alzahrani
 ID: 2112245
-/Issue: incomplate comment and not clear explanations
-/Solution: add coments throughout the code and provide explanations for each section
 /Issue: variables names not  descrptive 
 /Solution: renamed and improve variables to be easier to understand
 ==================================
