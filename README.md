@@ -12,16 +12,14 @@ Raghad Khaled Alzahrani
 ID: 2112245
 /Issue: incomplate comment and not clear explanations
 /Solution: add coments throughout the code and provide explanations for each section
-
 /Issue: variables names not  descrptive 
 /Solution: renamed and improve variables to be easier to understand
-
 ==================================
 
 Sara Alshareef
 ID: 2006219
-Issue :  UNDEFINED VARIABLE D , incomplete comments 
-solution : define the variable in the method itself or passed it as an argument, complete the comments and correct the typo
+/Issue :  UNDEFINED VARIABLE D , incomplete comments 
+/solution : define the variable in the method itself or passed it as an argument, complete the comments and correct the typo
 ==================================
 
 Noura Ahmed Aljehani
@@ -32,5 +30,6 @@ ID: 2111335
 
 Rahaf Alzahrani 
 ID: 2112095
-
+/issue: Unused BufferedWriter.
+/solution: It should be used to write the calculated data to the file.
 ==================================
