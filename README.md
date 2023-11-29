@@ -16,8 +16,8 @@ ID: 2112245
 
 Sara Alshareef
 ID: 2006219
-/Issue :  UNDEFINED VARIABLE D , incomplete comments 
-/solution : define the variable in the method itself or passed it as an argument, complete the comments and correct the typo
+/Issue :  incomplete comments 
+/solution : complete the comments and correct the typo
 ==================================
 
 Noura Ahmed Aljehani
