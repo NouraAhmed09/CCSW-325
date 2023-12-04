@@ -53,3 +53,18 @@ public class SensorDataProcessor {
                     }
                 }
             }
+              // Write calculated data to the file
+            for (double[][] layer : calculatedData) {
+                for (double[] row : layer) {
+                    for (double value : row) {
+                        writer.write(Double.toString(value));
+                        writer.newLine();
+                    }
+                }
+            }
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
