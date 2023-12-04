@@ -3,7 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class SensorDataProcessor {
-// Senson data and limits.
+// Sensor data and limits.
 
     public double[][][] sensorData;// Three-dimensional array to store sensor data
     public double[][] limits;// Two-dimensional array to store limits
@@ -33,6 +33,7 @@ public class SensorDataProcessor {
                 for (int j = 0; j < sensorData[0].length; j++) {
                     for (int k = 0; k < sensorData[0][0].length; k++) {
                         // Calculate the processed data value
+                        double divisor = 0.0; // Define the divisor variable
                          calculatedData[i][j][k] = sensorData[i][j][k] / divisor - Math.pow(limits[i][j], 2.0);
                         
                          // Calculate the average of the current sensor data
